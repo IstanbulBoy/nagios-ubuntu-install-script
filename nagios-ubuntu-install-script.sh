@@ -61,30 +61,17 @@ sudo mkdir - /usr/local/nagios/var/spool/checkresults
 sudo chown -R nagios.nagios /usr/local/nagios
 sudo chown -R nagios.nagcmd /usr/local/nagios/var/rw
 
-# Configure Nagios contacts
 
-if grep --quiet  nagios@localhost  /usr/local/nagios/etc/objects/contacts.cfg; then
-        echo exists
-else
-        sudo echo 'define contact{
-        contact_name                    nagiosadmin             ; Short name of user
-        use                             generic-contact         ; Inherit default values from generic-contact template (defined above)
-        alias                           Nagios Admin            ; Full name of user
-
-        email                           nagios@localhost        ; <<***** CHANGE THIS TO YOUR EMAIL ADDRESS ******
-        }' >>/usr/local/nagios/etc/objects/contacts.cfg
-
-fi
-#-----------------------------------Configure Apache-----------------------------------#
-
+# Configure Apache 
 sudo a2enmod rewrite
 sudo a2enmod cgi
 
-# Use htpasswd to create an admin user, called "nagiosadmin", that can access the Nagios web interface
+# Create Nagios web administration user
 printf "\n"
 printf "%s %s\n" "Please enter a password for the Nagios web administration user:" $NAGIOS_WEB_ADMINISTRATION_USERNAME
 sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users $NAGIOS_WEB_ADMINISTRATION_USERNAME
 printf "\n"
+
 # Create a symbolic link of nagios.conf to the sites-enabled directory
 sudo ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled/
 
@@ -108,3 +95,7 @@ printf "%s\n" "The nagios web interface is now available at: http://localhost/na
 printf "%s %s\n" "Username:" $NAGIOS_WEB_ADMINISTRATION_USERNAME
 printf "%s\n" "Password : The password entered during installation"
 printf "\n"
+printf "%s %s%s\n" "Please update the default administration contact information in:" $NAGIOS_HOME "/etc/objects/contacts.cfg"
+printf "%s\n" "Then restart nagios: $ sudo server nagios restart"
+printf "\n"
+printf "%s\n" "You should now configure mail for this host so you can receive alerts."
