@@ -47,22 +47,31 @@ if [ -e $download/nagios-plugins-$NAGIOS_PLUGINGS.tar.gz ]; then
 else 
 	echo "downloading file..."
 	wget http://nagios-plugins.org/download/nagios-plugins-$NAGIOS_PLUGINGS.tar.gz
-fi
+fis
 
 tar xzf $download/nagios-plugins-$NAGIOS_PLUGINGS.tar.gz -C $download
 cd $download/nagios-plugins-$NAGIOS_PLUGINGS
 ./configure --with-nagios-user=nagios --with-nagios-group=nagios --with-openssl
 sudo make
 sudo make install
-sudo chown nagios.nagios /usr/local/nagios
-sudo chown -R nagios:nagios /usr/local/nagios/libexec
-#chown -R nagios:nagios /usr/local/nagios/rw/*
+
+#---------------------------------Configure Configuration Paths-------------------------------#
+sudo mkdir -p /usr/local/nagios/etc/servers
+sudo mkdir -p /usr/local/nagios/etc/printers
+sudo mkdir -p /usr/local/nagios/etc/switches
+sudo mkdir -p /usr/local/nagios/etc/routers
+
+sudo sh -c 'echo 'cfg_dir=/usr/local/nagios/etc/servers' >> /usr/local/nagios/etc/nagios.cfg'
+sudo sh -c 'echo 'cfg_dir=/usr/local/nagios/etc/printers' >> /usr/local/nagios/etc/nagios.cfg'
+sudo sh -c 'echo 'cfg_dir=/usr/local/nagios/etc/switches' >> /usr/local/nagios/etc/nagios.cfg'
+sudo sh -c 'echo 'cfg_dir=/usr/local/nagios/etc/routers' >> /usr/local/nagios/etc/nagios.cfg'
+
+sudo mkdir - /usr/local/nagios/var/spool/checkresults
+sudo chown -R nagios.nagios /usr/local/nagios
+sudo chown -R nagios.nagcmd /usr/local/nagios/var/rw
 # rm -rf $download
 
 #---------------------------------Configure Nagios Contacts-------------------------------#
-
-sudo echo 'cfg_dir=/usr/local/nagios/etc/servers' >>/usr/local/nagios/etc/nagios.cfg
-sudo mkdir /usr/local/nagios/etc/servers
 
 if grep --quiet  nagios@localhost  /usr/local/nagios/etc/objects/contacts.cfg; then
         echo exists
@@ -94,32 +103,23 @@ sudo ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled/
 
 sudo ln -s /etc/init.d/nagios /etc/rcS.d/S99nagios
 
-printf "Script Finished Successful :-D\n"
+printf "%s\n" "Script Finished Successful :-D"
 printf "\n"
-printf "now use any browser and type http://nagios_server_public_ip/nagios \n"
-printf "-------------------------- \n"
-printf "USERNAME : nagiosadmin \n"
-printf "PASSWORD : THAT U HAVE ENTER AT TIME OF RUNNING SCRIPT \n"
-printf "-------------------------- \n"
-printf "now use any browser and type http://nagios_server_public_ip/nagios \n"
+printf "%s\n" "now use any browser and type http://nagios_server_public_ip/nagios"
+printf "%s\n" "--------------------------"
+printf "%s\n" "USERNAME : nagiosadmin"
+printf "%s\n" "PASSWORD : THAT U HAVE ENTER AT TIME OF RUNNING SCRIPT"
+printf "%s\n" "--------------------------"
+printf "%s\n" "now use any browser and type http://nagios_server_public_ip/nagios"
 printf "\n"
-printf "if u get error processing php5 (--configure): \n"
-printf "USE BELOW COMMAND & RE-EXECUTIVE THE SCRIPT AND REBOOT SYSTEM \n"
-printf "sudo apt-get remove --purge php5-common php5-cli \n"
+printf "%s\n" "if u get error processing php5 (--configure):"
+printf "%s\n" "USE BELOW COMMAND & RE-EXECUTIVE THE SCRIPT AND REBOOT SYSTEM"
+printf "%s\n" "sudo apt-get remove --purge php5-common php5-cli"
 printf "\n"
-printf "T: @ackbote\n"
-printf "E:hel.venket@gmail.com\n"
-printf "M:+918866442277\n"
+printf "%s\n" "T: @ackbote"
+printf "%s\n" "E:hel.venket@gmail.com"
+printf "%s\n" "M:+918866442277"
 printf "\n"
-printf "Always share what you learn, in easy and confortable way --\n"
+printf "%s\n" "Always share what you learn, in easy and confortable way --"
 printf "\n"
 printf "\n"
-####-----------------help-------------------------##
-#dpkg: error processing php5 (--configure):
-#dependency problems - leaving unconfigured
-#Errors were encountered while processing:
-# php5-gd
-# phpmyadmin
-# libapache2-mod-php5
-# php5
-## use this command and re-executive the script "#sudo apt-get remove --purge php5-common php5-cli"
