@@ -1,5 +1,7 @@
 # nagios-ubuntu-install-script
-Automated install of  Nagios 4.x.x and Nagios plugins 2.x.x onto a fresh Ubuntu 14.x.x
+Automated install of  Nagios 4.x.x and Nagios plugins 2.x.x onto a fresh Ubuntu 14.x.x.
+
+This script should work with newer versions of Ubuntu as well - let me know if you have success so I can add it here.
 
 ````
 $ sudo apt-get install git
