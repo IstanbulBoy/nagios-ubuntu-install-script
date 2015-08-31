@@ -81,9 +81,10 @@ sudo a2enmod rewrite
 sudo a2enmod cgi
 
 # Use htpasswd to create an admin user, called "nagiosadmin", that can access the Nagios web interface
-printf "%s%s\n" "Please enter a password for the Nagios web administration user: " $NAGIOS_WEB_ADMINISTRATION_USERNAME
+printf "\n"
+printf "%s %s\n" "Please enter a password for the Nagios web administration user:" $NAGIOS_WEB_ADMINISTRATION_USERNAME
 sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users $NAGIOS_WEB_ADMINISTRATION_USERNAME
-
+printf "\n"
 # Create a symbolic link of nagios.conf to the sites-enabled directory
 sudo ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled/
 
@@ -96,24 +97,14 @@ sudo service nagios start
 # Restart apache
 sudo service apache2 restart
 
+# Remove installation files
+sudo rm -rf $TEMP_DOWNLOAD_DIR
+
 # Finish
-printf "%s\n" "Script Finished Successful :-D"
 printf "\n"
-printf "%s\n" "now use any browser and type http://nagios_server_public_ip/nagios"
-printf "%s\n" "--------------------------"
-printf "%s\n" "USERNAME : nagiosadmin"
-printf "%s\n" "PASSWORD : THAT U HAVE ENTER AT TIME OF RUNNING SCRIPT"
-printf "%s\n" "--------------------------"
-printf "%s\n" "now use any browser and type http://nagios_server_public_ip/nagios"
+printf "%s\n" "Nagios & Nagios Plugins Installed Successfully"
 printf "\n"
-printf "%s\n" "if u get error processing php5 (--configure):"
-printf "%s\n" "USE BELOW COMMAND & RE-EXECUTIVE THE SCRIPT AND REBOOT SYSTEM"
-printf "%s\n" "sudo apt-get remove --purge php5-common php5-cli"
-printf "\n"
-printf "%s\n" "T: @ackbote"
-printf "%s\n" "E:hel.venket@gmail.com"
-printf "%s\n" "M:+918866442277"
-printf "\n"
-printf "%s\n" "Always share what you learn, in easy and confortable way --"
-printf "\n"
+printf "%s\n" "The nagios web interface is now available at: http://localhost/nagios"
+printf "%s %s\n" "Username:" $NAGIOS_WEB_ADMINISTRATION_USERNAME
+printf "%s\n" "Password : The password entered during installation"
 printf "\n"
