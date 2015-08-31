@@ -10,8 +10,8 @@ $ sudo git clone https://github.com/dyson/nagios/ /tmp/nagios && cd /tmp/nagios 
 Or download the script first and modify the options:
 
 ````
-git clone https://github.com/dyson/nagios/ /tmp/nagios && cd /tmp/nagios
-vim nagios.sh
+$ git clone https://github.com/dyson/nagios/ /tmp/nagios && cd /tmp/nagios
+$ vim nagios.sh
 ...
 NAGIOS_VERSION="4.1.1"
 NAGIOS_PLUGINGS="2.0.3"
@@ -20,5 +20,5 @@ NAGIOS_WEB_ADMINISTRATION_USERNAME="administrator"
 
 TEMP_DOWNLOAD_DIR="/tmp/download"
 ...
-sudo sh nagios.sh
+$ sudo sh nagios.sh
 ```
