@@ -1,5 +1,5 @@
 #!/bin/bash
-NAGIOS_VERSION="4.0.8"
+NAGIOS_VERSION="4.1.1"
 NAGIOS_PLUGINGS="2.0.3"
 NAGIOS_HOME="/usr/local/nagios"
 
