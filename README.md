@@ -3,14 +3,14 @@ Automated install of  Nagios 4.x.x and Nagios plugins 2.x.x onto a fresh Ubuntu 
 
 ````
 $ sudo apt-get install git
-$ sudo git clone https://github.com/dyson/nagios/ /tmp/nagios && cd /tmp/nagios && sh nagios.sh
+$ sudo git clone https://github.com/dyson/nagios-ubuntu-install-script/ /tmp/nagios-ubuntu-install-script && cd /tmp/nagios-ubuntu-install-script && sh nagios-ubuntu-install-script.sh
 ````
 
 Or download the script first and modify the options:
 
 ````
-$ git clone https://github.com/dyson/nagios/ /tmp/nagios && cd /tmp/nagios
-$ vim nagios.sh
+$ git clone https://github.com/dyson/nagios-ubuntu-install-script/ /tmp/nagios-ubuntu-install-script && cd /tmp/nagios-ubuntu-install-script
+$ vim nagios-ubuntu-install-script.sh
 ...
 NAGIOS_VERSION="4.1.1"
 NAGIOS_PLUGINGS="2.0.3"
@@ -19,5 +19,5 @@ NAGIOS_WEB_ADMINISTRATION_USERNAME="administrator"
 
 TEMP_DOWNLOAD_DIR="/tmp/download"
 ...
-$ sudo sh nagios.sh
+$ sudo sh nagios-ubuntu-install-script.sh
 ```
