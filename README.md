@@ -1,6 +1,5 @@
-# nagios
-installing nagios core 4.1.1 with nagios plugins 2.0.3, auto installation and configuration, (Ubuntu - Tested)
-tested on ubuntu server - 14.0.1, ubuntu-desktop, mint
+# nagios-ubuntu-install-script
+Automated install of  Nagios 4.x.x and Nagios plugins 2.x.x onto a fresh Ubuntu 14.x.x
 
 ````
 $ sudo apt-get install git
