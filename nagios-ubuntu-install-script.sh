@@ -49,7 +49,7 @@ sudo ./configure --with-nagios-user=nagios --with-nagios-group=nagios --with-ope
 sudo make
 sudo make install
 
-# Create and configure patsh and permissions
+# Create and configure paths and permissions
 sudo mkdir -p /usr/local/nagios/etc/{servers,printers,switches,routers}
 
 sudo sh -c 'echo 'cfg_dir=/usr/local/nagios/etc/servers' >> /usr/local/nagios/etc/nagios.cfg'
