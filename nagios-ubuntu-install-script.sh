@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# TODO: replace nagiosadmin in etc/cgi.cfg
+# TODO: test on a fresh installation again
+
 NAGIOS_VERSION="4.1.1"
 NAGIOS_PLUGINGS="2.0.3"
 NAGIOS_HOME="/usr/local/nagios"
