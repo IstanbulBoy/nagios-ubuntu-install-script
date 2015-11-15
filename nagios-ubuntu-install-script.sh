@@ -8,7 +8,7 @@ TEMP_DOWNLOAD_DIR="/tmp/download"
 
 # Download and install apache2 and tools required to compile nagios
 sudo apt-get update
-sudo apt-get install --yes apache2 php5 libapache2-mod-php5 php5-mcryp build-essential libgd2-xpm-dev openssl libssl-dev apache2-utils
+sudo apt-get install --yes apache2 php5 libapache2-mod-php5 php5-mcryp build-essential libgd2-xpm-dev openssl libssl-dev apache2-utils unzip
 
 # Create nagios users and groups
 sudo useradd nagios
