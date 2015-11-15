@@ -41,7 +41,7 @@ sudo /usr/bin/install -c -m 644 sample-config/httpd.conf /etc/apache2/sites-avai
 cd $TEMP_DOWNLOAD_DIR
 if ! [ -e $TEMP_DOWNLOAD_DIR/nagios-plugins-$NAGIOS_PLUGINGS.tar.gz ]; then
   wget http://nagios-plugins.org/download/nagios-plugins-$NAGIOS_PLUGINGS.tar.gz
-fis
+fi
 
 tar xzf $TEMP_DOWNLOAD_DIR/nagios-plugins-$NAGIOS_PLUGINGS.tar.gz -C $TEMP_DOWNLOAD_DIR
 cd $TEMP_DOWNLOAD_DIR/nagios-plugins-$NAGIOS_PLUGINGS
